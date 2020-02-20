@@ -5,15 +5,16 @@
 // `Component` is a ES6 class that defines the format of React components, which is done with `extends`
 import React, { Component } from 'react'
 
+import PropTypes from 'prop-types';
+
 // connect() is a state-related HOC "higher order component" use to wrap around our React component. HOCs give additional functionality to a component.
 import {connect} from 'react-redux'
 
 // 'Radium' is a styling HOC "higher order component" use to wrap around our React component. HOCs give additional functionality to a component.
 							// The purpose of Radium is to programmatically create CSS attributes to be used in our component
 							// The advantage is that CSS is no longer global (leading to cleaner, more contained code) and can by dynamically created
-import Radium from 'radium'
+import Radium, {StyleRoot} from 'radium'
 // Another great advantage of programatic CSS using Radium is that we can make CSS variables, such as base color schemas used throughout the app
-import { xWhiteSmoke } from '../stylesJS/base_colors'
 
 // We can import other components (eg <ComponentA>, <ComponentB>, <ComponentC>) which we may be nested inside this component
 import SideMenu from './SideMenu/SideMenu'
@@ -23,9 +24,6 @@ import SideIcon from './SideMenu/SideIcon'
 // We can also import action creators, for changing the Redux state from inside our component.
               // If we import action creators, they must be passed in with an object to the connect() HOC as the 2nd arguement
 import { toggleSideMenu } from '../actions/sideMenuActions'
-
-// import StyleRoot to be used for Radium style media queries
-import {StyleRoot} from 'radium';
 
 
 // we create our <App> component, but to inherit the behavior of a React component, we must `extends` the `Component` that was imported from React (see above)
@@ -69,8 +67,8 @@ class App extends Component {
 // Possible attributes include `bool`, `number`, `string`, `object`, `array` and `isRequired`
 // This also acts as a form of documentation
 App.propTypes = {
-  toggleSideMenu: React.PropTypes.func.isRequired,
-  sideMenuVisible: React.PropTypes.bool
+  toggleSideMenu: PropTypes.string.isRequired,
+  sideMenuVisible: PropTypes.bool
 }
 
 // Now we wrap the entire <App> component inside the Radium `higher order component` wrapper
@@ -117,8 +115,7 @@ const comStyles = (sideMenuVisible) => {
       margin: "0",
 			left: "0",
 			top: "0",
-			position: "fixed",
-      backgroundColor: xWhiteSmoke,
+			position: "fixed"
     },
     sideMenuIcon: {
       position: "absolute",

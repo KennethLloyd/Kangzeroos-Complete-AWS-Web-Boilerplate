@@ -44,7 +44,7 @@ export function signUpUser({email, agentName, password}){
 		// and as the 3rd arg pass in the attributeList array, followed by `null` as the 4th arg
 		// finally as the 5th (last) arg, pass in the callback function that has the error or result from AWS
 			console.log("about to USER...")
-		userPool.signUp(email, password, null, function(err, result){
+		userPool.signUp(email, password, attributeList, null, function(err, result){
 		    if (err) {
 		        console.log("an error occurred");
 		        console.log(err);

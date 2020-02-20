@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router'
 import { xMidBlue } from '../../stylesJS/base_colors'
 
 import {signUpUser} from '../../api/aws/aws_cognito'
+import PropTypes from 'prop-types';
 
 
 class SignUp extends Component {
@@ -122,7 +123,7 @@ class SignUp extends Component {
 };
 
 SignUp.propTypes = {
-	signUpUser: React.PropTypes.func.isRequired
+	signUpUser: PropTypes.func.isRequired
 };
 
 const RadiumHOC = Radium(SignUp);
